@@ -1,0 +1,12 @@
+<h1>STATIC OVERVIEW OF POSITION</h1>
+
+<p>Money Token ID: <%= @moneyToken[0] %></p>
+<p>Token 0 Fees to Collect: <%= @moneyToken[1] %></p>
+<p>Token 1 Fees to Collect: <%= @moneyToken[2] %></p>
+<p>Token 0 Liquidity Value [USD]: <%= @moneyToken[3] %></p>
+
+
+<form action="/getFee/<%= @moneyToken[0] %> ">
+
+  <button>Click for Live Info (Real Magic)</button>
+ </form>

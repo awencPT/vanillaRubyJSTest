@@ -1,0 +1,42 @@
+<html>
+  <head>
+  
+  </head>
+
+  <body>
+  <h1>Current Token Info</h1>
+
+<%= stylesheet_link_tag '/my_styles.css' %>
+
+
+<div class="medium-border big-padding">
+  <p class="company-name">Money Token ID: <%=@staticCollect[0]%></p>
+  <h3>Fees To Collect: <%=@staticCollect[1]%></h3>
+  <p>Lower Price: <%=@staticCollect[4]%></p>
+  <p>Current Price: <%=@staticCollect[2]%></p>
+  <p>Upper Price: <%=@staticCollect[3]%></p>
+  <h3>Close Out Value: <%=@staticCollect[5]%></h3>
+  <p>In Liquidity: <%=@staticCollect[6]%></p>
+  <p>Current Loan: <%=@staticCollect[7]%></p>
+  <p>Current Collateral: <%=@staticCollect[8]%></p>
+  <p>LTV: <%=@staticCollect[9]%></p>
+  <h3>Health Factor: <%=@staticCollect[10]%></h3>
+
+</div>
+
+<form action="/getFee/<%=@staticCollect[0]%>">
+
+  <button>Get Live Prices</button>
+</form>
+
+<p>If Fees To Collect is 0, probably went out of range</p>
+<form action="/getValidRanges">
+
+  <button>Find Current Range (~15s)</button>
+</form>
+    
+  </body>
+</html>
+
+
+

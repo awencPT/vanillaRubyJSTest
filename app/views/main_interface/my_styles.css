@@ -1,0 +1,25 @@
+.company-name {
+  color: maroon;
+  font-weight: 700;
+}
+
+.unstyled-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.medium-border {
+  border-bottom: 5px grey solid;
+}
+
+.big-padding {
+  padding: 100px;
+}
+
+body {
+
+  background-color: black;      
+  background-size: 100%;         
+  color: white;                  
+  text-align: center;            
+}
