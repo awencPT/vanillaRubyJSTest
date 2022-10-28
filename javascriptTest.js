@@ -225,10 +225,13 @@ const liquidityAmountsABI = [
 		"type": "function"
 	}
 ];
+require('dotenv').config();
+const polyInfuraKey = process.env.POLY_INFURA_KEY
+const mainnetInfuraKey = process.env.MAINNET_INFURA_KEY
 
 const Web3 = require('web3');
-const web3 = new Web3(new Web3.providers.HttpProvider("https://polygon-mainnet.infura.io/v3/72add0f77c2a405a83fd3b182a0af39f")); 
-const web3_mainnet = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/72add0f77c2a405a83fd3b182a0af39f")); 
+const web3 = new Web3(new Web3.providers.HttpProvider("https://polygon-mainnet.infura.io/v3/b72bd924576c44e99f2023480e440e98")); 
+const web3_mainnet = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/b72bd924576c44e99f2023480e440e98")); 
 const {
 Multicall,
 ContractCallResults,
