@@ -1,6 +1,5 @@
 {
   "name": "vanilla-rails",
-  
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
@@ -19,8 +18,8 @@
   "devDependencies": {
     "webpack-dev-server": "^3.11.2"
   },
-  "engines" : { 
+  "engines": {
     "npm": "7.x",
-    "node" : "18.x"
+    "node": "18.x"
   }
 }
