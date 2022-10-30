@@ -225,9 +225,9 @@ const liquidityAmountsABI = [
 		"type": "function"
 	}
 ];
-require('dotenv').config();
-const polyInfuraKey = process.env.POLY_INFURA_KEY
-const mainnetInfuraKey = process.env.MAINNET_INFURA_KEY
+// require('dotenv').config();
+// const polyInfuraKey = process.env.POLY_INFURA_KEY
+// const mainnetInfuraKey = process.env.MAINNET_INFURA_KEY
 
 const Web3 = require('web3');
 const web3 = new Web3(new Web3.providers.HttpProvider("https://polygon-mainnet.infura.io/v3/b72bd924576c44e99f2023480e440e98")); 

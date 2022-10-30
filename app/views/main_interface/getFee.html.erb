@@ -1,6 +1,10 @@
 <html>
   <head>
-  
+    <style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
   </head>
 
   <body>
@@ -8,17 +12,30 @@
 
 <%= stylesheet_link_tag '/my_styles.css' %>
 
+<table style="width:100%">
+  <tr>
+    <td><%=@staticCollect[2]%></td>
+    <td><%=@staticCollect[5]%></td>
+    <td><%=@staticCollect[12]%></td>
+    <td><%=@staticCollect[11]%></td>
 
+  </tr>
+</table>
 <div class="medium-border big-padding">
   <p class="company-name">Money Token ID: <%=@staticCollect[0]%></p>
-  <h3>Fees To Collect: <%=@staticCollect[1]%></h3>
-  <p>Lower Price: <%=@staticCollect[4]%></p>
-  <p>Current Price: <%=@staticCollect[2]%></p>
-  <p>Upper Price: <%=@staticCollect[3]%></p>
-  <h3>Close Out Value: <%=@staticCollect[5]%></h3>
-  <p>In Liquidity: <%=@staticCollect[6]%></p>
-  <p>Current Loan: <%=@staticCollect[7]%></p>
-  <p>Current Collateral: <%=@staticCollect[8]%></p>
+  <h3>Fees To Collect: $<%=@staticCollect[1]%></h3>
+  <p>Lower Price: $<%=@staticCollect[4]%></p>
+  <p>Current Price: $<%=@staticCollect[2]%></p>
+  <p>Upper Price: $<%=@staticCollect[3]%></p>
+  <h3>Close Out Value: $<%=@staticCollect[5]%></h3>
+  <i>^Value if Cashed Out : LP Token + Wallet + Aave Collateral - Aave Loan</i>
+  <h3>Bot Wallet Value - W/ Fees: $<%=@staticCollect[12]%></h3>
+  <i>^Value of Bot: LP Token + Wallet + Fees to Collect</i>
+  <h3>Bot Wallet Value - No Fees: $<%=@staticCollect[11]%></h3>
+  <i>^Value of Bot: LP Token + Wallet</i>
+  <p>In Liquidity: $<%=@staticCollect[6]%></p>
+  <p>Current Loan: $<%=@staticCollect[7]%></p>
+  <p>Current Collateral: $<%=@staticCollect[8]%></p>
   <p>LTV: <%=@staticCollect[9]%></p>
   <h3>Health Factor: <%=@staticCollect[10]%></h3>
 

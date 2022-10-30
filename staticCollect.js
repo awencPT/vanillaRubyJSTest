@@ -351,6 +351,6 @@ const upperTick_token0 = 1/TICKtoETH(positionData.tickLower, decimalDifference)
 
 const lowerTick_token0 =  1/TICKtoETH(positionData.tickUpper, decimalDifference)
 
-console.log(tokenId,totalFeesValue_0.toFixed(6), (1/ethPrice).toFixed(2), upperTick_token0.toFixed(2),lowerTick_token0.toFixed(2), closeOutValue.toDP(2),adjustedInLiquidity.toFixed(2),currentLoanAmount_adj.toDP(2),aaveCollateralValue.toDP(2),LTV.toDP(4),healthFactor.toDP(4))
+console.log(tokenId,totalFeesValue_0.toFixed(6), (1/ethPrice).toFixed(2), upperTick_token0.toFixed(2),lowerTick_token0.toFixed(2), closeOutValue.toDP(3),adjustedInLiquidity.toFixed(2),currentLoanAmount_adj.toDP(2),aaveCollateralValue.toDP(2),LTV.toDP(4),healthFactor.toDP(4),adjustGrandTotal.toDP(4), adjustGrandTotalwCollectFees.toDP(4))
 
 }()
