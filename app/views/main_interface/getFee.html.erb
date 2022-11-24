@@ -10,7 +10,7 @@ table, th, td {
   <body>
   <h1>Current Token Info</h1>
 
-<%= stylesheet_link_tag '/my_styles.css' %>
+
 
 <table style="width:100%">
   <tr>
@@ -54,6 +54,18 @@ table, th, td {
     
   </body>
 </html>
+<form action="/ranker" >
+  <div>
+    <button>Rank </button>
+  </div>
+</form>
 
-
-
+<form action="/plotter/file" >
+  <div>
+    <label for="file">Choose file to upload</label>
+    <input type="file" id="file" name="file" multiple />
+  </div>
+  <div>
+    <button>Submit</button>
+  </div>
+</form>

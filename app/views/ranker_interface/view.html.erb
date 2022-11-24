@@ -1,0 +1,69 @@
+
+<table border="1">
+  <tr>
+    <th>
+      T
+    </th>
+
+    <th>
+      Pool Address
+    </th>
+  <th>
+    Fee Tier 
+  </th>
+   <th>
+    Fee Accrual Rate
+  </th>
+   <th>
+    Basic Estimated Return
+  </th>    
+   <th>
+    Number of Ticks Wide
+  </th>
+   <th>
+    Stable Coin
+  </th>
+   <th>
+    Percent of Active Liq. to Break Even :: Hedged
+  </th>
+   <th>
+    Percent of Active Liq. to Break Even :: Not Hedged
+  </th>
+  </tr>
+<% @mostRecentPools.each do |a_table| %>
+  <% poolPositions = Position.all.where({:pool_id => a_table.id }) %>
+    <% poolPositions.each do |a_position| %>
+  <tr>
+    <td>
+      <%=a_position.T %>
+    </td>
+    <td>
+      <%=a_position.poolAddress %>
+    </td>
+    <td>
+      <%=a_position.feeTier %>
+    </td>
+     <td>
+      <%=a_position.feeAccrualRate %>
+    </td>
+     <td>
+      <%=a_position.basicEstReturn_gaussS %>
+    </td>
+    <td>
+      <%=a_position.N %>
+    </td>
+     <td>
+      <%=a_position.stableCoin %>
+    </td>
+     <td>
+      <%=a_position.percentOfActiveLiqToBreakEven_YES_HEDGE_gaussS %>
+    </td>
+    <td>
+      <%=a_position.percentOfActiveLiqToBreakEven_NO_HEDGE_gaussS %>
+    </td>
+  </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<%=@allAnalysis%>

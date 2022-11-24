@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tokenId: MyString
+  totalFeesValue_0: MyString
+  ethPrice: MyString
+  upperTick_token0: MyString
+  lowerTick_token0: MyString
+  closeOutValue: MyString
+  adjustedInLiquidity: MyString
+  currentLoanAmount_adj: MyString
+  aaveCollateralValue: MyString
+  LTV: MyString
+  healthFactor: MyString
+  adjustGrandTotal: MyString
+  adjustGrandTotalwCollectFees: MyString
+
+two:
+  tokenId: MyString
+  totalFeesValue_0: MyString
+  ethPrice: MyString
+  upperTick_token0: MyString
+  lowerTick_token0: MyString
+  closeOutValue: MyString
+  adjustedInLiquidity: MyString
+  currentLoanAmount_adj: MyString
+  aaveCollateralValue: MyString
+  LTV: MyString
+  healthFactor: MyString
+  adjustGrandTotal: MyString
+  adjustGrandTotalwCollectFees: MyString
