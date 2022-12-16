@@ -9,7 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "chartkick/chart.js"
 
-import "chartkick/chartjs-plugin-zoom.js"
+
 
 Rails.start()
 Turbolinks.start()
