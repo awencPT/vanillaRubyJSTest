@@ -25,7 +25,14 @@ class ApplicationController < ActionController::Base
     @start_date= 7.days.ago
     @end_date = DateTime.now
 
+    @feesEarned = PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:totalFeesValue_0)
+    @minimumFeesNeeded = PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:maxLossValue)
+    @feeChart = [{label: "series1" , data:@feesEarned} , {label:"series2" , data:@minimumFeesNeeded, fill: true}]
 
+    @priceChart = PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:ethPrice)
+    @lowerTickChart = PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:lowerTick_token0)
+    @upperTickChart = PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:upperTick_token0)
+    @comboPriceChart = [{label:"underlying", data:@priceChart } , {label:"lowerTick", data:@lowerTickChart,borderDash: [5, 5] }, {label:"upperTick", data:@upperTickChart , borderDash: [5, 5]}]
 
     render({ :template => "main_interface/homepage.html.erb" })
   end
@@ -75,6 +82,9 @@ class ApplicationController < ActionController::Base
   instance.adjustGrandTotal = firstVar.fetch("adjustGrandTotal")
   instance.adjustGrandTotalwCollectFees = firstVar.fetch("adjustGrandTotalwCollectFees")
 
+  instance.desiredRangeSpacing = firstVar.fetch("desiredRangeSpacing")
+  instance.maxLossDecimalPerc = firstVar.fetch("maxLossDecimalPerc")
+  instance.maxLossValue = -1*firstVar.fetch("maxLossValue").to_f
   
 
   instance.save

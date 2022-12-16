@@ -13,7 +13,10 @@
 
   <button>Most Recent Pool Rankings</button>
  </form>
+
 <h1>Money Token ID: <%=PortfolioSnapshot.all.last.tokenId%> </h1>
+<h1>Current Range Spacing: <%=PortfolioSnapshot.all.last.desiredRangeSpacing%> </h1>
+
 <form action="/submit_form">
   <input name ="start_time" value = <%=7.days.ago%> >
   <input name ="end_time" value = <%=DateTime.now%> >
@@ -27,14 +30,20 @@
 
 
 
-<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:closeOutValue), xtitle: "Time", ytitle: "Close Out Value", min:@minCloseOut%>
-<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:ethPrice), xtitle: "Time", ytitle: "Underlying Price" , min:@minEthPrice%>
-<%=area_chart GasPrice.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:gasCost), xtitle: "Time", ytitle: "Gas Costs in Matic"%>
-<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:totalFeesValue_0), xtitle: "Time", ytitle: "Fees To Collect" , min:"0"%>
-<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:healthFactor), xtitle: "Time", ytitle: "Aave Health Factor" , min:".99"%>
+<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:closeOutValue), xtitle: "Time", ytitle: "Close Out Value", min:@minCloseOut , download: true%>
+<%=line_chart @feeChart, xtitle: "Time", ytitle:"Fees Earned & Max Loss Threshold",min:"0", download: true%>
+<%=line_chart @comboPriceChart, xtitle: "Time", ytitle: "Underlying Price" , min:@minEthPrice, responsive: true, download: true %>
+<%=area_chart GasPrice.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:gasCost), xtitle: "Time", ytitle: "Gas Costs in Matic" ,download: true%>
+<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:totalFeesValue_0), xtitle: "Time", ytitle: "Fees To Collect" , min:"0" ,download: true%>
+
+<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:maxLossValue), xtitle: "Time", ytitle: "Max Loss Value [Matic]",download: true %>
+<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:maxLossDecimalPerc), xtitle: "Time", ytitle: "Max Loss Perc Decimal",download: true %>
+
+
+
+<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:healthFactor), xtitle: "Time", ytitle: "Aave Health Factor" , min:".99" ,download: true%>
 <%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:tokenId), xtitle: "Time", ytitle: "Token ID" , min:"0"%>
-<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:upperTick_token0), xtitle: "Time", ytitle: "Upper Tick (Token 0 Value)" , min:"0"%>
-<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:lowerTick_token0), xtitle: "Time", ytitle: "Lower Tick (Token 0 Value)" , min:"0"%>
+<%=line_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:desiredRangeSpacing), xtitle: "Time", ytitle: "Desired Range Spacing" %>
 
 
 <p>**Takes ~15s to load**</p>
