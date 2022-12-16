@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   get("/poolView", {:controller=> "ranker", :action => "poolView"})
   post("/database_write", {:controller=> "application", :action=>"write"})
   post("/analyzer_database_write", {:controller=> "ranker", :action=>"write_Analyzer"})
+  post("/gasPrice_write", {:controller=>"application", :action=>"gasPriceWrite"})
+
+  get("/submit_form", {:controller=> "application", :action => "submit_date"})
 end

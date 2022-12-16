@@ -1,16 +1,40 @@
 <h1>ARC UNI V3 LP BOT</h1>
+
+ <!-- FusionCharts Library -->
+    <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+    <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+    <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.gammel.js"></script>
+    <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.zune.js"></script>
+    <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.carbon.js"></script>
+    <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.ocean.js"></script>
+
+
 <form action="/poolView">
 
   <button>Most Recent Pool Rankings</button>
  </form>
 <h1>Money Token ID: <%=PortfolioSnapshot.all.last.tokenId%> </h1>
-<%=area_chart PortfolioSnapshot.group_by_minute(:created_at).maximum(:closeOutValue), xtitle: "Time", ytitle: "Close Out Value", min:@minCloseOut%>
-<%=area_chart PortfolioSnapshot.group_by_minute(:created_at).maximum(:ethPrice), xtitle: "Time", ytitle: "Eth Price" , min:@minEthPrice%>
-<%=area_chart PortfolioSnapshot.group_by_minute(:created_at).maximum(:totalFeesValue_0), xtitle: "Time", ytitle: "Fees To Collect" , min:"0"%>
-<%=area_chart PortfolioSnapshot.group_by_minute(:created_at).maximum(:healthFactor), xtitle: "Time", ytitle: "Aave Health Factor" , min:".99"%>
-<%=area_chart PortfolioSnapshot.group_by_minute(:created_at).maximum(:tokenId), xtitle: "Time", ytitle: "Token ID" , min:"0"%>
-<%=area_chart PortfolioSnapshot.group_by_minute(:created_at).maximum(:upperTick_token0), xtitle: "Time", ytitle: "Upper Tick (Token 0 Value)" , min:"0"%>
-<%=area_chart PortfolioSnapshot.group_by_minute(:created_at).maximum(:lowerTick_token0), xtitle: "Time", ytitle: "Lower Tick (Token 0 Value)" , min:"0"%>
+<form action="/submit_form">
+  <input name ="start_time" value = <%=7.days.ago%> >
+  <input name ="end_time" value = <%=DateTime.now%> >
+
+
+</form>
+
+
+
+
+
+
+
+<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:closeOutValue), xtitle: "Time", ytitle: "Close Out Value", min:@minCloseOut%>
+<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:ethPrice), xtitle: "Time", ytitle: "Underlying Price" , min:@minEthPrice%>
+<%=area_chart GasPrice.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:gasCost), xtitle: "Time", ytitle: "Gas Costs in Matic"%>
+<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:totalFeesValue_0), xtitle: "Time", ytitle: "Fees To Collect" , min:"0"%>
+<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:healthFactor), xtitle: "Time", ytitle: "Aave Health Factor" , min:".99"%>
+<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:tokenId), xtitle: "Time", ytitle: "Token ID" , min:"0"%>
+<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:upperTick_token0), xtitle: "Time", ytitle: "Upper Tick (Token 0 Value)" , min:"0"%>
+<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:lowerTick_token0), xtitle: "Time", ytitle: "Lower Tick (Token 0 Value)" , min:"0"%>
 
 
 <p>**Takes ~15s to load**</p>

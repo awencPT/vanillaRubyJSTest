@@ -12,13 +12,21 @@ class ApplicationController < ActionController::Base
     render({ :template => "main_interface/java.html.erb" })
   end
 
+
+  def submit_date
+    redirect_to()
+  end
+
   def home 
     #call the database and plot
     num = PortfolioSnapshot.all.last.closeOutValue * 0.9
     @minCloseOut = num
     @minEthPrice = PortfolioSnapshot.all.last.ethPrice * 0.9
+    @start_date= 7.days.ago
+    @end_date = DateTime.now
 
-    
+
+
     render({ :template => "main_interface/homepage.html.erb" })
   end
 
@@ -72,6 +80,16 @@ class ApplicationController < ActionController::Base
   instance.save
   end
 
+  def gasPriceWrite
+    var = params.fetch("gas_variable")
+
+    gasInstance = GasPrice.new
+    gasInstance.gasUsed = var.fetch("gasUsed")
+    gasInstance.gasPrice = var.fetch("gasPrice")
+    gasInstance.gasCost = var.fetch("gasCost")
+
+    gasInstance.save
+  end
   
 
   

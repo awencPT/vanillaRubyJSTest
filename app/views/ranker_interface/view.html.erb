@@ -1,5 +1,7 @@
+<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
 
-<table border="1">
+<table class = "sortable">
+<thead>
   <tr>
     <th>
       T
@@ -30,6 +32,8 @@
     Percent of Active Liq. to Break Even :: Not Hedged
   </th>
   </tr>
+  </thead>
+  <tbody>
 <% @mostRecentPools.each do |a_table| %>
   <% poolPositions = Position.all.where({:pool_id => a_table.id }) %>
     <% poolPositions.each do |a_position| %>
@@ -66,4 +70,3 @@
   <% end %>
 </table>
 
-<%=@allAnalysis%>
