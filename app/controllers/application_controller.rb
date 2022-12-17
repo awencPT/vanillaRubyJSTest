@@ -17,12 +17,21 @@ class ApplicationController < ActionController::Base
     redirect_to()
   end
 
+  def fetch_data
+    data = PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:ethPrice)
+    render json: data
+  end
+
+
+
   def home 
     #call the database and plot
     num = PortfolioSnapshot.all.last.closeOutValue * 0.9
     @minCloseOut = num
     @minEthPrice = PortfolioSnapshot.all.last.ethPrice * 0.9
-    @start_date= 7.days.ago
+    
+    @shortStart_date = 6.hours.ago
+    @start_date= 3.days.ago
     @end_date = DateTime.now
 
     @feesEarned = PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:totalFeesValue_0)
@@ -30,9 +39,10 @@ class ApplicationController < ActionController::Base
     @feeChart = [{label: "series1" , data:@feesEarned} , {label:"series2" , data:@minimumFeesNeeded, fill: true}]
 
     @priceChart = PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:ethPrice)
-    @lowerTickChart = PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:lowerTick_token0)
-    @upperTickChart = PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:upperTick_token0)
-    @comboPriceChart = [{label:"underlying", data:@priceChart } , {label:"lowerTick", data:@lowerTickChart,borderDash: [5, 5] }, {label:"upperTick", data:@upperTickChart , borderDash: [5, 5]}]
+    @shortPriceChart = PortfolioSnapshot.where({ :created_at => (@shortStart_date..@end_date) }).group_by_minute(:created_at).maximum(:ethPrice)
+    @lowerTickChart = PortfolioSnapshot.where({ :created_at => (@shortStart_date..@end_date) }).group_by_minute(:created_at).maximum(:lowerTick_token0)
+    @upperTickChart = PortfolioSnapshot.where({ :created_at => (@shortStart_date..@end_date) }).group_by_minute(:created_at).maximum(:upperTick_token0)
+    @comboPriceChart = [{label:"underlying", data:@shortPriceChart } , {label:"lowerTick", data:@lowerTickChart,borderDash: [5, 5] }, {label:"upperTick", data:@upperTickChart , borderDash: [5, 5]}]
 
     render({ :template => "main_interface/homepage.html.erb" })
   end
