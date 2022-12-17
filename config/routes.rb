@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   post("/gasPrice_write", {:controller=>"application", :action=>"gasPriceWrite"})
 
   get("/submit_form", {:controller=> "application", :action => "submit_date"})
+
+
 end

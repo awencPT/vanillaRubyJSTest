@@ -13,14 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
 
-  def submit_date
-    redirect_to()
-  end
 
-  def fetch_data
-    data = PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:ethPrice)
-    render json: data
-  end
 
 
 
@@ -30,7 +23,7 @@ class ApplicationController < ActionController::Base
     @minCloseOut = num
     @minEthPrice = PortfolioSnapshot.all.last.ethPrice * 0.9
     
-    @shortStart_date = 6.hours.ago
+    @shortStart_date = 1.hour.ago
     @start_date= 3.days.ago
     @end_date = DateTime.now
 

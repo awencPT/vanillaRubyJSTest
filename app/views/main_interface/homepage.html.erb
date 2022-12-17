@@ -28,11 +28,12 @@
 
 
 
-
 <%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:closeOutValue), xtitle: "Time", ytitle: "Close Out Value", min:@minCloseOut , download: true%>
-<%=line_chart @feeChart, xtitle: "Time", ytitle:"Fees Earned & Max Loss Threshold",min:"0", download: true%>
-<%=line_chart @comboPriceChart, xtitle: "Time", ytitle: "Upper and Lower Tick Price" , min:@minEthPrice, responsive: true, download: true %>
 <%=line_chart @priceChart, xtitle: "Time", ytitle: "Underlying Price" , min:@minEthPrice, responsive: true, download: true %>
+<%=line_chart @feeChart, xtitle: "Time", ytitle:"Fees Earned & Max Loss Threshold",min:"0", download: true%>
+
+<%=line_chart @comboPriceChart, xtitle: "Time", ytitle: "Upper and Lower Tick Price" , min:@minEthPrice, responsive: true, download: true %>
+
 <%=area_chart GasPrice.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:gasCost), xtitle: "Time", ytitle: "Gas Costs in Matic" ,download: true%>
 <%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:totalFeesValue_0), xtitle: "Time", ytitle: "Fees To Collect" , min:"0" ,download: true%>
 
