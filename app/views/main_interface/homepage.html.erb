@@ -35,6 +35,7 @@
 <%=line_chart @comboPriceChart, xtitle: "Time", ytitle: "Upper and Lower Tick Price" , min:@minEthPrice, responsive: true, download: true %>
 
 <%=area_chart GasPrice.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:gasCost), xtitle: "Time", ytitle: "Gas Costs in Matic" ,download: true%>
+<%=area_chart GasPrice.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:gasPrice), xtitle: "Time", ytitle: "Gas Price [gwei]" ,download: true%>
 <%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:totalFeesValue_0), xtitle: "Time", ytitle: "Fees To Collect" , min:"0" ,download: true%>
 
 
