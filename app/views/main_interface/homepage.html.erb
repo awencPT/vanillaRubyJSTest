@@ -37,12 +37,20 @@
 <%=area_chart GasPrice.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:gasCost), xtitle: "Time", ytitle: "Gas Costs in Matic" ,download: true%>
 <%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:totalFeesValue_0), xtitle: "Time", ytitle: "Fees To Collect" , min:"0" ,download: true%>
 
-<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:maxLossValue), xtitle: "Time", ytitle: "Max Loss Value [Matic]",download: true %>
-<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:maxLossDecimalPerc), xtitle: "Time", ytitle: "Max Loss Perc Decimal",download: true %>
-
 
 
 <%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:healthFactor), xtitle: "Time", ytitle: "Aave Health Factor" , min:".99" ,download: true%>
+
+<%=line_chart @feeAccrualRate_chart, xtitle: "Time", ytitle: "Fee Accrual Rate" , responsive: true, download: true %>
+<%=line_chart @onChainVolatility_chart, xtitle: "Time", ytitle: "On Chain Volatility Annualized" , responsive: true, download: true %>
+<%=line_chart @avgDailyVolume_token0_chart, xtitle: "Time", ytitle: "Avg Daily Volume [5 days]" , responsive: true, download: true %>
+<%=line_chart @activeTickLiq_chart, xtitle: "Time", ytitle: "Active Tick Liquidity" , responsive: true, download: true %>
+
+
+
+
+<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:maxLossValue), xtitle: "Time", ytitle: "Max Loss Value [Matic]",download: true %>
+<%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:maxLossDecimalPerc), xtitle: "Time", ytitle: "Max Loss Perc Decimal",download: true %>
 <%=area_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:tokenId), xtitle: "Time", ytitle: "Token ID" , min:"0"%>
 <%=line_chart PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:desiredRangeSpacing), xtitle: "Time", ytitle: "Desired Range Spacing" %>
 

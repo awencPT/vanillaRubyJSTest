@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_16_184823) do
+ActiveRecord::Schema.define(version: 2022_12_20_184208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,10 @@ ActiveRecord::Schema.define(version: 2022_12_16_184823) do
     t.string "desiredRangeSpacing"
     t.string "maxLossDecimalPerc"
     t.string "maxLossValue"
+    t.string "feeAccrualRate"
+    t.string "ActiveTickLiquidityAmount0"
+    t.string "avgDailyVolumeToken0"
+    t.string "OnChainVolatility"
   end
 
   create_table "positions", force: :cascade do |t|
