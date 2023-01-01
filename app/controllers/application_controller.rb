@@ -13,7 +13,16 @@ class ApplicationController < ActionController::Base
   end
 
 
+  def display_calcs
 
+    startTime = params.fetch("startTime")
+    endTime = params.fetch("endTime")
+
+    initialValue = PortfolioSnapshot.where({:created_at => (startTime)}).last
+    finalValue = PortfolioSnapshot.where({:created_at => (endTime)}).last
+    @closeOutPercDiff = (finalValue - initialValue)/initialValue
+    render({ :template => "main_interface/homepage.html.erb" })
+  end
 
 
 
@@ -24,7 +33,7 @@ class ApplicationController < ActionController::Base
     @minEthPrice = PortfolioSnapshot.all.last.ethPrice * 0.9
     
     @shortStart_date = 1.hour.ago
-    @start_date= 7.days.ago
+    @start_date= 25.days.ago
     @end_date = DateTime.now
 
     @feesEarned = PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:totalFeesValue_0)

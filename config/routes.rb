@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post("/analyzer_database_write", {:controller=> "ranker", :action=>"write_Analyzer"})
   post("/gasPrice_write", {:controller=>"application", :action=>"gasPriceWrite"})
 
-  get("/submit_form", {:controller=> "application", :action => "submit_date"})
+  get("/submit_form", {:controller=> "application", :action => "display_calcs"})
 
 
 end
