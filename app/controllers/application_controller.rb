@@ -17,10 +17,19 @@ class ApplicationController < ActionController::Base
 
     startTime = params.fetch("startTime")
     endTime = params.fetch("endTime")
+    # first = "2022-12-15"
+    # second = "2022-12-18"
+    initialCloseOutValue = PortfolioSnapshot.where({:created_at => (startTime..endTime)}).group_by_minute(:created_at).maximum(:closeOutValue).values.first.to_f
+    finalCloseOutValue = PortfolioSnapshot.where({:created_at => (startTime..endTime)}).group_by_minute(:created_at).maximum(:closeOutValue).values.last.to_f
+    @closeOutPercDiff = ((finalCloseOutValue - initialCloseOutValue)/initialCloseOutValue )*100
 
-    initialValue = PortfolioSnapshot.where({:created_at => (startTime)}).last
-    finalValue = PortfolioSnapshot.where({:created_at => (endTime)}).last
-    @closeOutPercDiff = (finalValue - initialValue)/initialValue
+    initialPriceValue = PortfolioSnapshot.where({:created_at => (startTime..endTime)}).group_by_minute(:created_at).maximum(:ethPrice).values.first.to_f
+    finalPriceValue = PortfolioSnapshot.where({:created_at => (startTime..endTime)}).group_by_minute(:created_at).maximum(:ethPrice).values.last.to_f
+    @finalPricePercDiff = ((finalPriceValue - initialPriceValue)/initialPriceValue )*100
+    # PortfolioSnapshot.where({ :created_at => (first..second) }).group_by_minute(:created_at).maximum(:closeOutValue).fetch("Fri, 16 Dec 2022 01:34:00")
+    #..@end_date
+    #.group_by_minute(:created_at).maximum(:closeOutValue)
+    # (finalValue - initialValue)/initialValue
     render({ :template => "main_interface/homepage.html.erb" })
   end
 
