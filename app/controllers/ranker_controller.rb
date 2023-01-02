@@ -15,6 +15,9 @@ def poolView
   render({ :template => "ranker_interface/view.html.erb" })
 end
 
+
+
+
 def write_Analyzer
 
 

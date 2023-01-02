@@ -1,0 +1,9 @@
+
+<form action="/display_stats">
+  <input name ="startTime" value = <%=DateTime.now%> >
+  <input name ="endTime" value = <%=DateTime.now%> >
+
+  <button> Run Calcs </button>
+</form>
+<h1> % DIFF: Close Out Value : <%=@closeOutPercDiff%> </h1>
+<h1> % DIFF: Underlying Price : <%=@finalPricePercDiff%> </h1>
