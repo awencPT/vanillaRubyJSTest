@@ -112,10 +112,10 @@ class ApplicationController < ActionController::Base
   instance.maxLossDecimalPerc = firstVar.fetch("maxLossDecimalPerc")
   instance.maxLossValue = -1*firstVar.fetch("maxLossValue").to_f
 
-  instance.feeAccrualRate = firstVar.fetch("feeAccrualRate")
-  instance.ActiveTickLiquidityAmount0 = firstVar.fetch("ActiveTickLiq")
-  instance.avgDailyVolumeToken0 = firstVar.fetch("avgDailyVolume")
-  instance.OnChainVolatility = firstVar.fetch("OnChainVolatility")
+  # instance.feeAccrualRate = firstVar.fetch("feeAccrualRate")
+  # instance.ActiveTickLiquidityAmount0 = firstVar.fetch("ActiveTickLiq")
+  # instance.avgDailyVolumeToken0 = firstVar.fetch("avgDailyVolume")
+  # instance.OnChainVolatility = firstVar.fetch("OnChainVolatility")
   
 
   instance.save
