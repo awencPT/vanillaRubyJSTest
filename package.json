@@ -14,15 +14,16 @@
     "ethers": "^5.7.2",
     "fs": "*",
     "turbolinks": "^5.2.0",
-    "web3": "^1.8.0"
+    "web3": "^1.8.0",
+    "webpack": "^4.46.0"
   },
   "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "^4.11.1"
   },
   "engines": {
-    "npm": "7.x",
-    "node": ">=19.x",
-    "pnpm": "7.x"
+    "npm": "9.x",
+    "node": ">=16.x"
+    
   }
 }
