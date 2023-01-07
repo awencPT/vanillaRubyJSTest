@@ -6,7 +6,7 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "^5.4.3",
     "@uniswap/v3-sdk": "^3.9.0",
-    "@uniswap/v3-staker":"1.0.1",
+    "@uniswap/v3-staker":"1.0.2",
     "chart.js": "^4.1.2",
     "chartjs": "^0.3.24",
     "chartkick": "^4.2.0",
