@@ -18,7 +18,7 @@
     "npm": "^8.x.x",
     "turbolinks": "^5.2.0",
     "web3": "^1.8.0",
-    "webpack": "^5.75.0",
+    "webpack": "^4.x.x",
     "webpack-cli": "^5.0.1"
   },
   "version": "0.1.0",
