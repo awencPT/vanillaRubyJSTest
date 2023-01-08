@@ -55,10 +55,10 @@ class ApplicationController < ActionController::Base
     @upperTickChart = PortfolioSnapshot.where({ :created_at => (@shortStart_date..@end_date) }).group_by_minute(:created_at).maximum(:upperTick_token0)
     @comboPriceChart = [{label:"underlying", data:@shortPriceChart } , {label:"lowerTick", data:@lowerTickChart,borderDash: [5, 5] }, {label:"upperTick", data:@upperTickChart , borderDash: [5, 5]}]
 
-    # @feeAccrualRate_chart = PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:feeAccrualRate)
-    # @onChainVolatility_chart = PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:OnChainVolatility)
-    # @avgDailyVolume_token0_chart = PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:avgDailyVolumeToken0)
-    # @activeTickLiq_chart = PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:ActiveTickLiquidityAmount0)
+    @feeAccrualRate_chart = PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:feeAccrualRate)
+    @onChainVolatility_chart = PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:OnChainVolatility)
+    @avgDailyVolume_token0_chart = PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:avgDailyVolumeToken0)
+    @activeTickLiq_chart = PortfolioSnapshot.where({ :created_at => (@start_date..@end_date) }).group_by_minute(:created_at).maximum(:ActiveTickLiquidityAmount0)
 
     render({ :template => "main_interface/homepage.html.erb" })
   end
@@ -112,10 +112,10 @@ class ApplicationController < ActionController::Base
   instance.maxLossDecimalPerc = firstVar.fetch("maxLossDecimalPerc")
   instance.maxLossValue = -1*firstVar.fetch("maxLossValue").to_f
 
-  # instance.feeAccrualRate = firstVar.fetch("feeAccrualRate")
-  # instance.ActiveTickLiquidityAmount0 = firstVar.fetch("ActiveTickLiq")
-  # instance.avgDailyVolumeToken0 = firstVar.fetch("avgDailyVolume")
-  # instance.OnChainVolatility = firstVar.fetch("OnChainVolatility")
+  instance.feeAccrualRate = firstVar.fetch("feeAccrualRate")
+  instance.ActiveTickLiquidityAmount0 = firstVar.fetch("ActiveTickLiq")
+  instance.avgDailyVolumeToken0 = firstVar.fetch("avgDailyVolume")
+  instance.OnChainVolatility = firstVar.fetch("OnChainVolatility")
   
 
   instance.save

@@ -4,31 +4,24 @@
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "^5.4.3",
+    "@rails/webpacker": "5.2.1",
     "@uniswap/v3-sdk": "^3.9.0",
-    "@uniswap/v3-staker":"1.0.2",
-    "chart.js": "^4.1.2",
-    "chartjs": "^0.3.24",
+    "chart.js": "^4.0.1",
     "chartkick": "^4.2.0",
     "csv-write-stream": "^2.0.0",
     "decimal.js": "^10.4.2",
     "ethereum-multicall": "^2.15.0",
     "ethers": "^5.7.2",
     "fs": "*",
-    "hardhat": "^2.12.5",
-    "npm": "^8.x.x",
     "turbolinks": "^5.2.0",
-    "web3": "^1.8.0",
-    "webpack": "^4.x.x",
-    "webpack-cli": "^4.x.x"
+    "web3": "^1.8.0"
   },
   "version": "0.1.0",
   "devDependencies": {
-  
-    "webpack-dev-server": "^4.11.1"
+    "webpack-dev-server": "^3.11.2"
   },
   "engines": {
-    "npm": "9.x",
-    "node": ">=14.x"
+    "npm": "7.x",
+    "node": ">=15.x"
   }
 }
